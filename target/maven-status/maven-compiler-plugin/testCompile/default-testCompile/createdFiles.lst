@@ -1,0 +1,8 @@
+util/BaseTest.class
+util/Logs.class
+pojo/Login.class
+factory/PojoFactory.class
+testes/LoginTest.class
+enums/PayloadPaths.class
+util/RequestsInteraction.class
+config/Configuracoes.class
