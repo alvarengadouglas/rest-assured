@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  k6-test:
+  rest-assured:
     runs-on: ubuntu-latest
 
     steps:
