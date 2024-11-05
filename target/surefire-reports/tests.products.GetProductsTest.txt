@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: tests.products.GetProductsTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.807 s <<< FAILURE! - in tests.products.GetProductsTest
+listProductsWithLimitTest  Time elapsed: 1.222 s  <<< ERROR!
+java.lang.Exception: expected: <3> but was: <5>
+	at tests.products.GetProductsTest.listProductsWithLimitTest(GetProductsTest.java:125)
+

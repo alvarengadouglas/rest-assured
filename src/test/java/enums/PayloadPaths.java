@@ -2,7 +2,8 @@ package enums;
 
 public enum PayloadPaths {
 
-    LOGIN("src/test/resources/payloads/loginSuccess.json");
+    LOGIN("src/test/resources/payloads/loginSuccess.json"),
+    UPDATE_PRODUCT("src/test/resources/payloads/updateProduct.json");;
 
     private final String param;
 

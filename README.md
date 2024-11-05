@@ -1,19 +1,19 @@
 <p align="center">
   <a href="https://unform.dev">
-    <img src="https://media.licdn.com/dms/image/v2/C4D0BAQEJ0U5SPYlYWQ/company-logo_200_200/company-logo_200_200/0/1639648768249/k6io_logo?e=2147483647&v=beta&t=2Tnavg2_vBfzATILN9YVMY2icMlwCwGTvfQ30muvU3Y" height="150" width="175" alt="Unform" />
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx2BoZf-nQXK6CNdeFsXyl590aWMnnd_x3og&s" alt="Rest-Assured" />
   </a>
 </p>
 
-<p align="center">O Grafana k6 é uma ferramenta de teste de carga extensível, de código aberto e fácil de usar para desenvolvedores.! 🚀</p>
+<p align="center">Testar e validar serviços REST em Java é mais difícil do que em linguagens dinâmicas como Ruby e Groovy! 🚀</p>
 
 ## Tecnologias
 <div align="center">
 
 Esse projeto foi construído com as seguintes tecnologias.
 
-[![npm](https://img.shields.io/badge/JavaScript-18.x.x%20%3E%20-blue?style=for-the-badge&logo=javascript&color=DAA520)](https://nodejs.org/en)<space><space>
-[![Coverage Status](https://img.shields.io/badge/Docker-latest-blue?style=for-the-badge&logo=docker&color=1E90FF)](https://docs.docker.com/desktop/)<space><space>
-[![Coverage Status](https://img.shields.io/badge/K6-latest-blue?style=for-the-badge&logo=k6&color=836FFF)](https://grafana.com/docs/k6/latest/)
+[![Java](https://img.shields.io/badge/Java-11.x.x-blue?style=for-the-badge&logo=Java&color=red)](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html)<space><space>
+[![RestAssured](https://img.shields.io/badge/Rest_Assured-5.3.0-blue?style=for-the-badge&logo=&color=greenm)](https://rest-assured.io/)<space><space>
+
 
 </div>
 
@@ -24,9 +24,42 @@ Esse é um projeto básico de teste de performance integrado a um pipeline de CI
 Ao rodar o pipeline você terá as seguintes etapas:
 - Instalação do Docker.
 - Checkout do código fonte.
-- Execução dos testes.
+- Execução dos tests.
 - Extração do relatório.
 - Disponibilização do relatório como artefato no GitHub.
+
+## Arquitetura:
+
+```
+├── README.md
+├── pom.xml
+├── ./github/workflows/pipeline.yaml
+├── assets
+│   └── imagens //Imagens para o README.md
+└── src
+    └── test
+        ├── java
+        │   ├── config
+        │   │   └── Configuracoes.java
+        │   ├── enums
+        │   │   └── PayloadPaths.java
+        │   ├── factory
+        │   │   └── PojoFactory.java
+        │   ├── pojo
+        │   │   └── Login.java
+        │   ├── tests
+        │   │   └── RunTest.java
+        │   └── util
+        │       ├── BaseTest.java
+        │       ├── Logs.java
+        │       └── RequestInteraction.java
+        └── resources
+            ├── payloads
+            │   └── arquivos json
+            └── schemas
+                └── Pesquisa.feature
+```
+
 
 
 ## Relatório:

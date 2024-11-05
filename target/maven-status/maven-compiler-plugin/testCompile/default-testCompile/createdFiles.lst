@@ -1,8 +1,12 @@
-util/BaseTest.class
-util/Logs.class
+tests/products/DeleteProductTest.class
 pojo/Login.class
 factory/PojoFactory.class
-testes/LoginTest.class
 enums/PayloadPaths.class
 util/RequestsInteraction.class
 config/Configuracoes.class
+tests/products/GetProductsTest.class
+util/BaseTest.class
+util/Logs.class
+tests/LoginTest.class
+pojo/UpdateProducts.class
+tests/products/UpdateProductTest.class

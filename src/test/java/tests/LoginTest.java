@@ -1,4 +1,4 @@
-package testes;
+package tests;
 
 import config.Configuracoes;
 import enums.PayloadPaths;
@@ -74,7 +74,7 @@ public class LoginTest extends BaseTest {
         }
 
         try{
-           contractValidation(response, "schemas/login/loginSuccess.json");
+           contractValidation(response, "schemas/loginSuccess.json");
            logPass("Contrato validado com sucesso!");
         }catch(Exception e){
            message = "Falha o validar o contrato! Verifique o response body retornado";

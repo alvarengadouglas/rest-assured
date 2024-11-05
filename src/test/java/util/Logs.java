@@ -2,11 +2,12 @@ package util;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.http.Header;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +22,6 @@ public class Logs {
    String divError = "<div style='text-align:center;font-weight:bold;font-size: 16px; color:red;'>";
    String fechaDiv = "</div>";
    String quebraLibra = "<br>";
-   String h1 = "<h1>#</h1>";
-   String badge = "<span class='badge badge-info'>#</span>";
 
 
    public void createReport(String reportName) {
@@ -75,8 +74,47 @@ public class Logs {
       throw new Exception(a.getMessage());
    }
 
+   public void logError(String messageLog) throws Exception {
+      et.fail(messageLog);
+      throw new Exception(messageLog);
+   }
+
    public void logError(String messageLog, Exception e) throws Exception {
       et.fail(messageLog.trim().replace(":", "") + ": " + e.getMessage());
       throw new Exception(e.getMessage());
+   }
+
+   public void logFail(String messageLog) {
+      et.fail(messageLog);
+   }
+
+   public boolean logAssertJsonValues(String responseJson, Map<String, Object> expectedValues) {
+      try {
+         ObjectMapper objectMapper = new ObjectMapper();
+         JsonNode jsonNode = objectMapper.readTree(responseJson);
+
+         for (Map.Entry<String, Object> entry : expectedValues.entrySet()) {
+            String key = entry.getKey();
+            Object expectedValue = entry.getValue();
+
+            if (jsonNode.has(key)) {
+               JsonNode jsonValueNode = jsonNode.get(key);
+               Object jsonValue = objectMapper.treeToValue(jsonValueNode, expectedValue.getClass());
+
+               if (!jsonValue.equals(expectedValue)) {
+                  logFail("Erro: Valor para a chave ['" + key + "'] não corresponde. ESPERADO: [" + expectedValue + "] - ATUAL: [" + jsonValue + "].");
+                  return false;
+               }
+               logPass("Valores do reponse body para key [" + key + "] - ESPERADO: [" + expectedValue + "] - ATUAL: [" + jsonValue + "]");
+            } else {
+               logFail("Erro: A chave ['" + key + "'] não existe no JSON.");
+               return false;
+            }
+         }
+         return true;
+      } catch (Exception e) {
+         logFail("Exception in logAssertJsonValues(): " + e.getMessage());
+         return false;
+      }
    }
 }
