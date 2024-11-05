@@ -72,13 +72,14 @@ Contém classes de configuração que centralizam as variáveis de ambiente e pa
 #### enums: 
 Armazena enums que facilitam a organização e reutilização de constantes, como PayloadPaths.java, que contém caminhos para os payloads usados nos testes.
 
-factory: Fornece uma classe de fábrica, PojoFactory.java, responsável por criar instâncias de objetos (POJOs) usados nos testes, facilitando a geração de dados para os cenários de teste.
+#### factory: 
+Fornece uma classe de fábrica, PojoFactory.java, responsável por criar instâncias de objetos (POJOs) usados nos testes, facilitando a geração de dados para os cenários de teste.
 
 #### pojo:
 Contém os POJOs (Plain Old Java Objects) que representam modelos de dados, como Login.java e UpdateProducts.java. Esses objetos simplificam o manuseio de dados estruturados dentro dos testes.
 
 #### tests: 
-Pasta principal para os testes automatizados.
+Pacote principal para os testes automatizados.
 
 #### products: 
 Agrupa testes relacionados a operações de produto, como criação, atualização e exclusão de produtos.
@@ -87,16 +88,16 @@ Agrupa testes relacionados a operações de produto, como criação, atualizaç�
 Teste específico para o fluxo de login do sistema.
 
 #### util:
-Contém classes utilitárias usadas para suportar os testes.
+Pacote com classes utilitárias usadas para suportar os testes.
 
 #### BaseTest.java: 
-Classe base que configura o ambiente comum para todos os testes.
+Classe abstrata que configura o ambiente comum para todos os testes.
 
 #### Logs.java: 
 Classe para manipulação e configuração de logs.
 
 #### RequestInteraction.java: 
-lasse responsável pelas interações com a API, facilitando a construção e execução de requisições.
+Interface responsável pelas interações com a API, facilitando a construção e execução de requisições.
 
 #### resources:
 Contém arquivos externos e recursos usados nos testes.
