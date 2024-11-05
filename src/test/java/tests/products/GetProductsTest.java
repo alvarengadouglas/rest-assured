@@ -77,14 +77,13 @@ public class GetProductsTest extends BaseTest{
     @DisplayName("Listar produtos com limit")
     void listProductsWithLimitTest() throws Exception {
         createTest("Listar produtos com limit");
-        String message;
         logInfoSeparator("DADOS ENVIADOS");
 
-
+        String message;
         Map<String, Object> headers = new HashMap<>();
         headers.put("Accept", "*/*");
 
-        Response response = get(headers, "/products?limit=5");
+        Response response = get(headers, "/products?limit=" + limitAmountProducts);
 
         logInfoAlignCenter("Headers:");
         logInfoTable(headers);
@@ -92,13 +91,11 @@ public class GetProductsTest extends BaseTest{
         logInfoSeparator("DADOS RETORNADOS");
         logInfoAlignCenter("Headers:");
         logInfoResponseHeaders(response.headers().asList());
-
         logInfoAlignCenter("Response body:");
         logInfoJson(response.asPrettyString());
         logInfo("Status code " + extractStatusCode(response));
 
         logInfoSeparator("VALIDAÇÕES");
-
         try{
             assertStatusCode(response, 200);
             logPass("Status code esperado é igual a: " + extractStatusCode(response));
